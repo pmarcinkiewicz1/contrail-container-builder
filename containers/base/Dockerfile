@@ -33,6 +33,7 @@ RUN BASE_EXTRA_RPMS=$(echo $BASE_EXTRA_RPMS | tr -d '"' | tr ',' ' ') && \
     fi && \
     yum install -y python3 python3-setuptools && \
     python3 -m pip install --no-compile "future==0.18.2" "six==1.13.0" && \
+    yum -y remove python-enum34
     yum clean all -y && \
     rm -rf /var/cache/yum && \
     ldconfig
