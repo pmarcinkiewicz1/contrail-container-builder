@@ -26,6 +26,9 @@ RUN BASE_EXTRA_RPMS=$(echo $BASE_EXTRA_RPMS | tr -d '"' | tr ',' ' ') && \
     wget -nv -c --tries=3 -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py && \
     python2 /tmp/get-pip.py && \
     if [[ -z "$CONTRAIL_BUILD_FROM_SOURCE" ]] ; then \
+      yum deplist contrail-lib ;\
+      yum deplist conrail-setup ;\
+      yum deplist python-contrail ;\
       yum install -y contrail-lib contrail-setup contrail-utils python-contrail ; \
     fi && \
     yum install -y python3 python3-setuptools && \
